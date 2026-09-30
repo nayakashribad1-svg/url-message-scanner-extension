@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>URL & Message Scanner Settings</title>
+    <style>
+      :root {
+        font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+        color-scheme: light dark;
+      }
+
+      body {
+        margin: 0;
+        padding: 24px;
+        background: #f5f7fb;
+        color: #111827;
+      }
+
+      .container {
+        max-width: 820px;
+        margin: 0 auto;
+        background: rgba(255,255,255,0.9);
+        border: 1px solid rgba(15,23,42,0.08);
+        border-radius: 18px;
+        box-shadow: 0 18px 32px rgba(15,23,42,0.08);
+        padding: 20px 22px;
+      }
+
+      h1 {
+        margin-top: 0;
+        font-size: 28px;
+      }
+
+      .section {
+        margin-top: 24px;
+        padding-top: 18px;
+        border-top: 1px solid rgba(15,23,42,0.08);
+      }
+
+      label {
+        display: block;
+        margin-bottom: 8px;
+        font-weight: 600;
+      }
+
+      input[type="text"],
+      input[type="password"],
+      select {
+        width: 100%;
+        max-width: 500px;
+        padding: 10px 12px;
+        border: 1px solid rgba(15,23,42,0.12);
+        border-radius: 10px;
+        background: rgba(255,255,255,0.7);
+        color: inherit;
+        font: inherit;
+      }
+
+      .checkbox-row {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        margin-top: 10px;
+      }
+
+      input[type="checkbox"] {
+        width: 18px;
+        height: 18px;
+      }
+
+      .button-row {
+        display: flex;
+        gap: 10px;
+        flex-wrap: wrap;
+        margin-top: 16px;
+      }
+
+      button {
+        border: 1px solid rgba(15,23,42,0.12);
+        border-radius: 10px;
+        padding: 10px 14px;
+        font: inherit;
+        font-weight: 700;
+        cursor: pointer;
+      }
+
+      .primary {
+        background: #2563eb;
+        color: white;
+        border-color: #2563eb;
+      }
+
+      .ghost {
+        background: transparent;
+        color: inherit;
+      }
+
+      .danger {
+        background: #dc2626;
+        color: white;
+        border-color: #dc2626;
+      }
+
+      .status {
+        margin-top: 14px;
+        min-height: 24px;
+        color: #0f766e;
+        font-weight: 600;
+      }
+
+      .help {
+        color: #475467;
+        font-size: 13px;
+        line-height: 1.5;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <h1>URL & Message Scanner Settings</h1>
+
+      <div class="section">
+        <label for="regionSelect">Region pack</label>
+        <select id="regionSelect">
+          <option value="global">Global</option>
+          <option value="IN">India</option>
+        </select>
+        <p class="help">The selected region adds extra scam patterns and local guidance.</p>
+      </div>
+
+      <div class="section">
+        <div class="checkbox-row">
+          <input id="onlineCheckToggle" type="checkbox" />
+          <label for="onlineCheckToggle" style="margin: 0;">Enable online threat check</label>
+        </div>
+        <p class="help">Offline by default. Online checks are only sent when you explicitly enable them and have a valid API key configured.</p>
+      </div>
+
+      <div class="section">
+        <label for="safeBrowsingKey">Google Safe Browsing API key</label>
+        <input id="safeBrowsingKey" type="password" placeholder="Enter your Safe Browsing API key" />
+        <p class="help">Stored only in chrome.storage.local and never synced or logged.</p>
+      </div>
+
+      <div class="section">
+        <label for="virustotalKey">VirusTotal API key</label>
+        <input id="virustotalKey" type="password" placeholder="Enter your VirusTotal API key" />
+        <p class="help">Stored only in chrome.storage.local and never synced or logged.</p>
+      </div>
+
+      <div class="section">
+        <div class="checkbox-row">
+          <input id="warningInterstitialToggle" type="checkbox" />
+          <label for="warningInterstitialToggle" style="margin: 0;">Show warning interstitial before a high-risk page opens</label>
+        </div>
+        <p class="help">This warns before navigating to a likely malicious URL, and gives the user a clear Go back / Proceed anyway choice.</p>
+      </div>
+
+      <div class="button-row">
+        <button id="saveBtn" class="primary" type="button">Save settings</button>
+        <button id="testBtn" class="ghost" type="button">Test key</button>
+        <button id="clearBtn" class="danger" type="button">Clear all data</button>
+      </div>
+
+      <div id="status" class="status" aria-live="polite"></div>
+    </div>
+
+    <script src="options.js"></script>
+  </body>
+</html>

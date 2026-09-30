@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>URL & Message Scanner onboarding</title>
+    <style>
+      :root {
+        font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+        background: #f8fafc;
+        color: #0f172a;
+      }
+
+      body {
+        margin: 0;
+        padding: 28px;
+        display: grid;
+        place-items: center;
+        min-height: 100vh;
+      }
+
+      .container {
+        width: min(760px, 92vw);
+        background: rgba(255,255,255,0.96);
+        border: 1px solid rgba(15,23,42,0.08);
+        border-radius: 18px;
+        padding: 28px 26px;
+        box-shadow: 0 18px 32px rgba(15,23,42,0.08);
+      }
+
+      h1 {
+        margin-top: 0;
+        font-size: clamp(28px, 5vw, 40px);
+      }
+
+      p, li {
+        color: #334155;
+        line-height: 1.6;
+        font-size: 15px;
+      }
+
+      ul {
+        padding-left: 18px;
+      }
+
+      .cta {
+        margin-top: 20px;
+        background: #2563eb;
+        color: white;
+        border: none;
+        border-radius: 10px;
+        padding: 12px 16px;
+        font-weight: 700;
+        cursor: pointer;
+      }
+    </style>
+  </head>
+  <body>
+    <main class="container">
+      <h1>Welcome to URL & Message Scanner</h1>
+      <p>This extension is offline by default. It scans links and messages locally using rules and heuristics.</p>
+
+      <h2>What is sent online?</h2>
+      <ul>
+        <li>Only when you explicitly enable online threat checks in settings.</li>
+        <li>Only the URL is sent for lookup — not your full chat history or password text.</li>
+        <li>Only to the Google Safe Browsing API and VirusTotal API, under the host permissions configured in the extension.</li>
+        <li>Never to analytics, telemetry, or remote config servers.</li>
+      </ul>
+
+      <h2>What is stored?</h2>
+      <ul>
+        <li>API keys are stored in <code>chrome.storage.local</code> only.</li>
+        <li>They are never synced to Chrome sync, logged, or sent to a telemetry endpoint.</li>
+        <li>The extension may cache results for one hour to reduce repeat lookups.</li>
+      </ul>
+
+      <h2>Important</h2>
+      <p>Results are heuristic and informational only. They are not a guarantee of safety and they do not guarantee a site is malicious or safe.</p>
+
+      <button id="continueBtn" class="cta" type="button">Continue</button>
+    </main>
+
+    <script src="onboarding.js"></script>
+  </body>
+</html>

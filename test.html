@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>URL Scanner Test Page</title>
+    <style>
+      body {
+        font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+        max-width: 900px;
+        margin: 40px auto;
+        padding: 20px;
+        background: #f8fafc;
+        color: #0f172a;
+      }
+
+      .card {
+        background: white;
+        border-radius: 14px;
+        padding: 18px;
+        box-shadow: 0 16px 32px rgba(15,23,42,0.08);
+        border: 1px solid rgba(15,23,42,0.08);
+        margin-bottom: 18px;
+      }
+
+      a { color: #2563eb; }
+      .safe { color: #166534; }
+      .sus { color: #b45309; }
+      .danger { color: #991b1b; }
+    </style>
+  </head>
+  <body>
+    <h1>URL Scanner Test Page</h1>
+
+    <div class="card">
+      <h2>Safe examples</h2>
+      <p><a href="https://www.google.com/" class="safe">Google</a></p>
+      <p><a href="https://www.microsoft.com/" class="safe">Microsoft</a></p>
+      <p><a href="https://github.com/" class="safe">GitHub</a></p>
+    </div>
+
+    <div class="card">
+      <h2>Suspicious examples</h2>
+      <p><a href="https://secure-login-account-update.co/verify" class="sus">Secure login update</a></p>
+      <p><a href="https://bit.ly/abcd1234" class="sus">Bit.ly shortener</a></p>
+      <p><a href="https://sbi-kyc-update.top/secure/verify" class="danger">SBI KYC update</a></p>
+      <p><a href="https://paytm-verify-login.xyz/confirm" class="danger">Paytm verify</a></p>
+    </div>
+
+    <div class="card">
+      <h2>Message-like content</h2>
+      <p>URGENT: Your SBI account is blocked. Verify your OTP now and enter your UPI PIN to avoid account suspension. <a href="https://sbi-kyc-update.co.in/secure">SBI verification</a></p>
+    </div>
+  </body>
+</html>

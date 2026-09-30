@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>URL & Message Scanner</title>
+    <link rel="stylesheet" href="popup.css" />
+  </head>
+  <body>
+    <div class="app">
+      <header class="header">
+        <div class="title-wrap">
+          <div class="logo" aria-hidden="true">🛡️</div>
+          <div>
+            <h1>URL & Message Scanner</h1>
+            <p>Heuristic checks only. Not a guarantee of safety.</p>
+          </div>
+        </div>
+      </header>
+
+      <div class="tabs" role="tablist" aria-label="Scanner tabs">
+        <button id="urlTab" class="tab active" role="tab" aria-selected="true" aria-controls="url-panel" data-tab="url">URL</button>
+        <button id="messageTab" class="tab" role="tab" aria-selected="false" aria-controls="message-panel" data-tab="message">Message</button>
+      </div>
+
+      <main class="panels">
+        <section id="url-panel" class="panel active" role="tabpanel" aria-labelledby="urlTab">
+          <label for="scanInput">Paste a link or full URL</label>
+          <textarea id="scanInput" rows="4" placeholder="https://example.com or suspicious-link.xyz"></textarea>
+
+          <div class="sample-row">
+            <button class="sample-btn" data-sample="safe" type="button">Safe</button>
+            <button class="sample-btn" data-sample="phish" type="button">Phish</button>
+            <button class="sample-btn" data-sample="india" type="button">India scam</button>
+          </div>
+
+          <div class="button-row">
+            <button id="scanUrlBtn" class="primary" type="button">Scan</button>
+            <button id="scanCurrentTabBtn" class="secondary" type="button">Scan current tab</button>
+          </div>
+        </section>
+
+        <section id="message-panel" class="panel" role="tabpanel" aria-labelledby="messageTab" hidden>
+          <label for="messageInput">Paste a message or chat text</label>
+          <textarea id="messageInput" rows="6" placeholder="Urgent bank alert: verify your account or your account will be blocked."></textarea>
+
+          <div class="sample-row">
+            <button class="sample-btn" data-sample="message-safe" type="button">Safe</button>
+            <button class="sample-btn" data-sample="message-phish" type="button">Phish</button>
+            <button class="sample-btn" data-sample="message-india" type="button">India scam</button>
+          </div>
+
+          <div class="button-row">
+            <button id="scanMessageBtn" class="primary" type="button">Scan message</button>
+          </div>
+        </section>
+      </main>
+
+      <section id="resultsCard" class="results-card hidden" aria-live="polite">
+        <div class="gauge-row">
+          <div id="riskGauge" class="gauge" aria-label="Risk gauge">
+            <span id="riskGaugeValue">0</span>
+          </div>
+          <div class="status">
+            <span id="riskBadge" class="badge safe">Safe</span>
+            <p id="riskSummary">No issues detected in local checks.</p>
+          </div>
+        </div>
+
+        <div class="findings">
+          <h2>Findings</h2>
+          <ul id="findingsList"></ul>
+        </div>
+
+        <div class="next-steps">
+          <h2>What should I do next?</h2>
+          <p id="nextStepText">No urgent action required based on the local scan.</p>
+        </div>
+
+        <div class="footer-row">
+          <button id="copyReportBtn" class="secondary" type="button">Copy report</button>
+          <button id="clearBtn" class="ghost" type="button">Clear</button>
+        </div>
+      </section>
+    </div>
+
+    <script type="module" src="popup.js"></script>
+  </body>
+</html>
